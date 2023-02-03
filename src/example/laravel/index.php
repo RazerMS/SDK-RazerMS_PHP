@@ -5,7 +5,7 @@ class PaymentController extends Controller
 {
     public function processPayment()
     {
-        $molpay = new Payment(config('services.molpay.merchant_id'), config('services.molpay.verify_key'), config('services.molpay.secret_key'));
+        $molpay = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'));
         $paymentUrl = $molpay->getPaymentUrl($transactionId, $amount, $callbackUrl);
     
         return redirect($paymentUrl);
@@ -13,7 +13,7 @@ class PaymentController extends Controller
     
     public function handleCallback(Request $request)
     {
-        $molpay = new Payment(config('services.molpay.merchant_id'), config('services.molpay.verify_key'), config('services.molpay.secret_key'));
+        $molpay = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'));
         $isPaymentValid = $molpay->verifySignature($transactionId, $amount, $status, $domain, $appcode, $vcode);
     
         if ($isPaymentValid) {

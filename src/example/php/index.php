@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 
 use Lib\RazerMerchantServices\Payment;
 
-$rms = new Payment($merchantId, $verifyKey, $secretKey);
+$rms = new Payment(env('RMS_MERCHANT_ID'), env('RMS_VERIFY_KEY'), env('RMS_SECRET_KEY'));
 $paymentUrl = $rms->getPaymentUrl($transactionId, $amount, $callbackUrl);
 
 // Redirect the customer to the payment page

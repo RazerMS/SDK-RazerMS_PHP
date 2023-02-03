@@ -13,7 +13,7 @@ class Payment
         $this->merchantId = $merchantId;
         $this->verifyKey = $verifyKey;
         $this->secretKey = $secretKey;
-        $this->baseUrl = 'https://pay.merchant.razer.com/RMS/pay/'.$merchantId;
+        $this->baseUrl = (env('RMS_ENVIRONMENT') === 'sandbox') ? 'https://'.env('RMS_SANDBOX_DOMAIN').'/RMS/pay/'.$merchantId : 'https://'.env('RMS_PROD_DOMAIN').'/RMS/pay/'.$merchantId;
     }
 
     public function getPaymentUrl($transactionId, $amount, $callbackUrl)
