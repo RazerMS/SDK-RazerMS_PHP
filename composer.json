@@ -1,0 +1,16 @@
+{
+    "require": {
+        "razermerchantservices/payment": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/RazerMS/SDK-RazerMS_PHP.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lib\\": "src/lib"
+        }
+    }
+}
