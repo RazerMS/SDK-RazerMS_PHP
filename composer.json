@@ -3,6 +3,7 @@
     "description": "A PHP library for Razer Merchant Services payment gateway",
     "version": "1.0.0",
     "homepage": "https://merchant.razer.com/",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Safwan Hakim",
