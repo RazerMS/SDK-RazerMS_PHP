@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
-use Lib\RazerMerchantServices\Payment;
+use RazerMerchantServices\Payment;
 
 $orderid = '12345';
 $amount = '1.10';
