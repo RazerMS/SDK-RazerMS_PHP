@@ -37,12 +37,6 @@ From there, you can create a new transaction by calling the getPaymentUrl method
 
 ```php
 
-$orderid = '12345';
-$amount = '1.10';
-$bill_name = 'RazerMS PHP';
-$bill_email = 'test@gmail.com';
-$bill_mobile = '0123456789';
-        
 // Optional variable to pass in getPaymentUrl - $bill_desc, $channel, $currency, $returnUrl, $callbackurl, $cancelurl
 $paymentUrl = $rms->getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile);
 
