@@ -5,6 +5,7 @@
     "keywords": ["payment","razer","razermerchantservices"],
     "homepage": "https://merchant.razer.com/",
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Safwan Hakim",
@@ -24,5 +25,6 @@
         "psr-4": {
             "RazerMerchantServices\\": "src/lib"
         }
-    }
+    },
+    "version": "1.0.0"
 }
