@@ -1,5 +1,5 @@
 <?php
-namespace Lib\RazerMerchantServices;
+namespace RazerMerchantServices;
 
 class Payment
 {
