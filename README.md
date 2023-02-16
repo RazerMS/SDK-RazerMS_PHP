@@ -1,6 +1,6 @@
 # SDK-RazerMS_PHP
 
-This is a PHP library for integrating with the Razer Merchant Services (RMS) payment gateway. It provides a simple interface for creating and managing transactions, handling callbacks, and more.
+This is a PHP library for integrating with the Razer Merchant Services (RMS) hosted payment gateway. It provides a simple interface for creating and managing transactions, handling callbacks, and more.
 
 ## Installation
 
