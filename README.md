@@ -6,9 +6,9 @@ This is a PHP library for integrating with the Razer Merchant Services (RMS) pay
 
 To use this library, simply clone the repository or install via composer:
 
-````
+```
 composer require razermerchantservices/payment
-````
+```
 
 ## Usage
 
