@@ -26,5 +26,11 @@
             "RazerMerchantServices\\": "src/lib"
         }
     },
-    "version": "1.0.0"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version": "1.0.0",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+    }
 }
