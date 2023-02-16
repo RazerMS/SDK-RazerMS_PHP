@@ -49,7 +49,7 @@ $paymentUrl = $rms->getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $b
 
 This will return a new Transaction object, which you can use to generate a payment form or redirect the user to the RMS hosted payment page.
 
-When the transaction is complete, RMS will send a callback to your server to notify you of the transaction status. You can handle this callback by defining a callback URL in your RMS account dashboard and adding the following code to your callback script:
+When the transaction is complete, RMS will send a notification to your server to notify you of the transaction status. You can handle this notification by defining a notification URL in your RMS account dashboard and adding the following code to your notification script:
 
 ```php
 
@@ -68,7 +68,7 @@ public function notification(Request $request)
 
  ```
  
- This will parse the callback data and update the status of the corresponding transaction.
+ This will parse the notification data and update the status of the corresponding transaction.
  
  
 ## Documentation
