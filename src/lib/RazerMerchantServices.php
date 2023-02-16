@@ -6,27 +6,29 @@ class Payment
     protected $merchantId;
     protected $verifyKey;
     protected $secretKey;
+    protected $environment;
     protected $baseUrl;
 
-    public function __construct($merchantId, $verifyKey, $secretKey)
+    public function __construct($merchantId, $verifyKey, $secretKey, $environment)
     {
         $this->merchantId = $merchantId;
         $this->verifyKey = $verifyKey;
         $this->secretKey = $secretKey;
-        $this->baseUrl = (env('RMS_ENVIRONMENT') === 'sandbox') ? 'https://'.env('RMS_SANDBOX_DOMAIN').'/RMS/pay/'.$merchantId : 'https://'.env('RMS_PROD_DOMAIN').'/RMS/pay/'.$merchantId;
+        $this->environment = $environment;
+        $this->baseUrl = ($environment === 'sandbox') ? 'https://sandbox.merchant.razer.com/RMS/pay/'.$merchantId : 'https://pay.merchant.razer.com/RMS/pay/'.$merchantId;
     }
 
-    public function getPaymentUrl($transactionId, $amount, $callbackUrl)
+    public function getPaymentUrl($orderid, $amount, $returnUrl, $bill_name, $bill_email, $bill_mobile, $bill_desc)
     {
         $data = [
-            'orderid' => $transactionId,
+            'orderid' => $orderid,
             'amount' => $amount,
-            'bill_name' => 'test',
-            'bill_email' => 'test@example.com',
-            'bill_mobile' => '0123456789',
-            'bill_desc' => 'test',
-            'vcode' => md5($transactionId . $amount . $callbackUrl . $this->verifyKey),
-            'returnurl' => $callbackUrl,
+            'bill_name' => $bill_name,
+            'bill_email' => $bill_email,
+            'bill_mobile' => $bill_mobile,
+            'bill_desc' => $bill_desc,
+            'vcode' => md5($amount . $this->merchantId . $orderid . $this->verifyKey),
+            'returnurl' => $returnUrl,
         ];
 
         return $this->baseUrl . '?' . http_build_query($data);

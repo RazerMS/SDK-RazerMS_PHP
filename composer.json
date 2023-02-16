@@ -1,6 +1,9 @@
-{
+{   
+    "name": "razermerchantservices/payment",
+    "description": "A PHP library for Razer Merchant Services payment gateway",
+    "version": "1.0.0",
     "require": {
-        "razermerchantservices/payment": "dev-master"
+        "php": ">=7.3"
     },
     "repositories": [
         {
