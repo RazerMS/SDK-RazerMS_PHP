@@ -1,7 +1,10 @@
 {   
     "name": "razermerchantservices/payment",
+    "type": "library",
     "description": "A PHP library for Razer Merchant Services payment gateway",
+    "keywords": ["payment","razer","razermerchantservices"],
     "homepage": "https://merchant.razer.com/",
+    "license": "MIT",
     "minimum-stability": "dev",
     "authors": [
         {
