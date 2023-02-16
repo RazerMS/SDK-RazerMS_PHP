@@ -5,7 +5,6 @@
     "keywords": ["payment","razer","razermerchantservices"],
     "homepage": "https://merchant.razer.com/",
     "license": "MIT",
-    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Safwan Hakim",
