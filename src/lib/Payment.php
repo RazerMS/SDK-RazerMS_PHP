@@ -18,7 +18,7 @@ class Payment
         $this->baseUrl = ($environment === 'sandbox') ? 'https://sandbox.merchant.razer.com/RMS/pay/'.$merchantId : 'https://pay.merchant.razer.com/RMS/pay/'.$merchantId;
     }
 
-    public function getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile, $bill_desc = 'RMS PHP Library Test', $channel = null, $currency = null, $returnUrl = null, $callbackurl = null, $cancelurl = null,)
+    public function getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile, $bill_desc = null, $channel = null, $currency = null, $returnUrl = null, $callbackurl = null, $cancelurl = null,)
     {
         $data = [
             'orderid' => $orderid,
@@ -40,7 +40,7 @@ class Payment
 
     public function verifySignature($paydate, $domain, $key, $appcode, $skey)
     {
-        $checkVcode = md5($paydate . $amount . $domain . $key . $appcode . $this->secretKey);
+        $checkVcode = md5($paydate . $domain . $key . $appcode . $this->secretKey);
         return $checkVcode === $skey;
     }
 }
