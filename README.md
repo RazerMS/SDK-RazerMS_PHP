@@ -73,7 +73,7 @@ public function notification(Request $request)
  
 ## Documentation
 
-For more information on using this library, please refer to this example.
+For more information on using this library, please refer to this [example](https://github.com/wankimmy/laravel-razerms-payment).
 
 Contribution
 ------------
