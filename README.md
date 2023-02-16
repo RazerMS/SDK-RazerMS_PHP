@@ -45,6 +45,8 @@ $bill_mobile = '0123456789';
         
 // Optional variable to pass in getPaymentUrl - $bill_desc, $channel, $currency, $returnUrl, $callbackurl, $cancelurl
 $paymentUrl = $rms->getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile);
+
+return redirect($paymentUrl);
 ```
 
 This will return a new Transaction object, which you can use to generate a payment form or redirect the user to the RMS hosted payment page.
