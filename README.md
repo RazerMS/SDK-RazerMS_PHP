@@ -7,6 +7,7 @@ This is a PHP library for integrating with the Razer Merchant Services (RMS) hos
 To use this library, simply clone the repository or install via composer:
 
 ```
+composer config repositories.razerms '{"url":"https://github.com/RazerMS/SDK-RazerMS_PHP","type":"vcs"}'
 composer require razermerchantservices/payment
 ```
 
