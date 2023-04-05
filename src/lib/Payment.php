@@ -20,6 +20,7 @@ class Payment
 
     public function getPaymentUrl($orderid, $amount, $bill_name, $bill_email, $bill_mobile, $bill_desc = 'RMS PHP Library', $channel = null, $currency = null, $returnUrl = null, $callbackurl = null, $cancelurl = null)
     {
+        $amount = number_format($amount, 2, '.', '');
         $data = [
             'orderid' => $orderid,
             'amount' => $amount,

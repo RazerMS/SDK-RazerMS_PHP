@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://phpunit.de/manual/4.1/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+>
+  <testsuites>
+    <testsuite name="">
+      <directory>./src/tests</directory>
+    </testsuite>
+  </testsuites>
+
+  <php>
+    <env name="RMS_MERCHANT_ID" value="SB_sandbox"/>
+    <env name="RMS_VERIFY_KEY" value="--replaceme--"/>
+    <env name="RMS_SECRET_KEY" value="--replaceme---"/>
+    <env name="RMS_ENVIRONMENT" value="sandbox"/>
+    <env name="DEBUG" value="false"/>
+  </php>
+</phpunit>
