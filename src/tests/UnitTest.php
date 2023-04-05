@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-require_once(__DIR__"../support/helpers.php");
+require_once(__DIR__."/../support/helpers.php");
 
 use PHPUnit\Framework\TestCase;
 use RazerMerchantServices\Payment as RmsPayment;
