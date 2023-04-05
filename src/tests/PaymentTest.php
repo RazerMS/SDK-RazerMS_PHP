@@ -5,7 +5,7 @@ require_once(__DIR__."/../support/helpers.php");
 use PHPUnit\Framework\TestCase;
 use RazerMerchantServices\Payment as RmsPayment;
 
-final class UnitTest extends TestCase
+final class PaymentTest extends TestCase
 {
     private static $orderid = null;
     private static $amount = null;
@@ -90,9 +90,59 @@ final class UnitTest extends TestCase
      */
     public function testVcodeIsProperlyCalculated(string $url): void
     {
-        $calculatedVcode = md5(self::$amount . env('RMS_MERCHANT_ID') . self::$orderid . env('RMS_VERIFY_KEY'));
+        $amount = number_format(self::$amount*1, 2, '.', '');
+        writelog("Amount: $amount");
+        $calculatedVcode = md5($amount . env('RMS_MERCHANT_ID') . self::$orderid . env('RMS_VERIFY_KEY'));
         writelog("Calculated Vcode - $calculatedVcode");
         // check url contains valid vcode
         $this->assertStringContainsString("&vcode=$calculatedVcode", $url);
+    }
+
+    /**
+     * @depends testCanHandleInstantiationErrors
+     */
+    public function testCanVerifyValidSkey($rms) : void
+    {
+        $request = (object)[
+            "tranID" => 1000,
+            "amount" => "1.10",
+            "orderid" => "TEST-ORDER",
+            "status" => "00",
+            "currency" => "MYR",
+            "paydate" => date("Ymd H:i:s"),
+            "domain" => env("RMS_MERCHANT_ID"),
+            "appcode" => "123456",
+        ];
+
+        $key = md5($request->tranID.$request->orderid.$request->status.$request->domain.$request->amount.$request->currency);
+        $request->skey = md5($request->paydate.$request->domain.$key.$request->appcode.env('RMS_SECRET_KEY'));
+
+        $this->assertTrue(
+            $rms->verifySignature($request->paydate, $request->domain, $key, $request->appcode, $request->skey)
+        );
+    }
+
+    /**
+     * @depends testCanHandleInstantiationErrors
+     */
+    public function testCanVerifyInvalidSkey($rms) : void
+    {
+        $request = (object)[
+            "tranID" => 1000,
+            "amount" => "1.10",
+            "orderid" => "TEST-ORDER",
+            "status" => "00",
+            "currency" => "MYR",
+            "paydate" => date("Ymd H:i:s"),
+            "domain" => env("RMS_MERCHANT_ID"),
+            "appcode" => "123456",
+        ];
+
+        $key = md5($request->tranID.$request->orderid.$request->status.$request->domain.$request->amount.$request->currency);
+        $request->skey = "just-a-tampered-skey";
+
+        $this->assertNotTrue(
+            $rms->verifySignature($request->paydate, $request->domain, $key, $request->appcode, $request->skey)
+        );
     }
 }
